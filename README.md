@@ -1,4 +1,3 @@
-# ai-nst-project
 # Neural Style Transfer using AdaIN
 
 A deep learning-based **Neural Style Transfer (NST)** project that combines the content of one image with the artistic style of another image using **Adaptive Instance Normalization (AdaIN)**. The project uses a **pre-trained VGG-19 encoder**, a trainable **convolutional decoder**, **PyTorch** for deep learning, and a **Flask web application** for interactive image stylization.
@@ -7,7 +6,7 @@ The system allows users to upload a **content image** and a **style image**, con
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 **Neural Style Transfer** is a computer vision technique that generates a new image by preserving the semantic content of one image while transferring the visual characteristics of another image.
 
@@ -29,7 +28,7 @@ The implementation follows an encoder–AdaIN–decoder architecture, where the 
 
 ---
 
-## 🎯 Overall Objective
+## Overall Objective
 
 The main objective of this project is to build an efficient and practical **Neural Style Transfer system** capable of transferring the artistic characteristics of a style image onto a content image while preserving the important structural information of the content image.
 
@@ -44,7 +43,7 @@ The project focuses on:
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 * **Neural Style Transfer**
 * **Adaptive Instance Normalization (AdaIN)**
@@ -65,7 +64,7 @@ The project focuses on:
 
 ---
 
-# 🔄 Project Workflow
+# Project Workflow
 
 The complete workflow can be summarized as:
 
@@ -109,7 +108,7 @@ The complete workflow can be summarized as:
 
 ---
 
-# 🧠 How AdaIN Works
+# How AdaIN Works
 
 Adaptive Instance Normalization is the core technique used for transferring style information.
 
@@ -118,18 +117,13 @@ For a content feature representation and a style feature representation, AdaIN f
 The content feature is normalized using its own mean and standard deviation:
 
 ```text
-Normalized Content Feature
-=
-(Content Feature - Content Mean) / Content Standard Deviation
+Normalized Content Feature = (Content Feature - Content Mean) / Content Standard Deviation
 ```
 
 The normalized feature is then scaled and shifted using the statistics of the style feature:
 
 ```text
-AdaIN Feature
-=
-Normalized Content Feature × Style Standard Deviation
-+ Style Mean
+AdaIN Feature = Normalized Content Feature × Style Standard Deviation + Style Mean
 ```
 
 This allows the model to transfer important statistical characteristics of the style image into the content feature representation.
@@ -138,7 +132,7 @@ In the implementation, the mean and standard deviation are calculated across the
 
 ---
 
-# 🏗️ Model Architecture
+# Model Architecture
 
 ## 1. VGG Encoder
 
@@ -191,7 +185,7 @@ The final layer produces a **3-channel RGB image**.
 
 ---
 
-# 🎓 Training Pipeline
+# Training Pipeline:-
 
 The decoder is trained while the VGG encoder remains frozen.
 
@@ -278,16 +272,14 @@ The implementation uses **Mean Squared Error (MSE)** for these loss calculations
 
 ---
 
-# 📉 Content Loss
+# Content Loss
 
 Content loss measures how closely the generated image preserves the target AdaIN content representation.
 
 Conceptually:
 
 ```text
-Content Loss
-=
-MSE(Generated Features, Target AdaIN Features)
+Content Loss = MSE(Generated Features, Target AdaIN Features)
 ```
 
 A lower content loss means that the generated image is better at preserving the desired content representation.
@@ -296,7 +288,7 @@ The project uses a configurable **content weight** to control the contribution o
 
 ---
 
-# 🎨 Style Loss
+# Style Loss
 
 Style loss measures the difference between the generated image and the style image using feature statistics.
 
@@ -311,18 +303,14 @@ This helps the generated image reproduce the texture and appearance characterist
 
 ---
 
-# ⚖️ Alpha Parameter
+# Alpha Parameter
 
 The project provides an **alpha parameter** to control the strength of style transfer.
 
 The transformed feature representation is combined with the original content feature representation as:
 
 ```text
-Final Feature
-=
-α × AdaIN Feature
-+
-(1 - α) × Content Feature
+Final Feature = α × AdaIN Feature + (1 - α) × Content Feature
 ```
 
 Therefore:
@@ -335,7 +323,7 @@ This makes the application more flexible because users can control how strongly 
 
 ---
 
-# 🌐 Web Application
+# Web Application
 
 The project also includes a **Flask-based web application** that provides an interactive interface for Neural Style Transfer.
 
@@ -351,7 +339,7 @@ The Flask application uses the trained decoder and VGG encoder for inference. It
 
 ---
 
-# 🛠️ Technologies and Software Used
+# Technologies and Software Used
 
 ## Programming Language
 
@@ -394,7 +382,7 @@ The Flask application uses the trained decoder and VGG encoder for inference. It
 
 ---
 
-# 📦 Python Libraries
+# Python Libraries
 
 The major libraries used in the implementation include:
 
@@ -413,7 +401,7 @@ tqdm
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```text
 NST-with-AdaIN/
@@ -470,7 +458,7 @@ The repository also contains demonstration input/output images and a trained dec
 
 ---
 
-# ⚙️ Training Configuration
+# Training Configuration
 
 The training script provides configurable parameters for the training pipeline.
 
@@ -492,7 +480,7 @@ These parameters can be modified through command-line arguments in the training 
 
 ---
 
-# 🚀 Installation
+# Installation
 
 Clone the repository:
 
@@ -534,7 +522,7 @@ pip install torch torchvision pillow flask flask-wtf flask-bootstrap wtforms wer
 
 ---
 
-# ▶️ Running the Web Application
+# Running the Web Application
 
 Navigate to the code directory:
 
@@ -560,14 +548,12 @@ and returns the generated stylized image.
 
 ---
 
-# 🧪 Example
+# Example
 
 The input consists of two images:
 
 ```text
-Content Image
-      +
-Style Image
+Content Image + Style Image
       ↓
 Neural Style Transfer
       ↓
@@ -578,7 +564,7 @@ For example, the project contains sample content/style images and corresponding 
 
 ---
 
-# 🔬 Technical Concepts Demonstrated
+# Technical Concepts Demonstrated
 
 This project demonstrates practical implementation of several important **Artificial Intelligence, Machine Learning, and Computer Vision** concepts:
 
@@ -628,7 +614,7 @@ This project demonstrates practical implementation of several important **Artifi
 
 ---
 
-# 💡 Why AdaIN?
+# Why AdaIN?
 
 Traditional optimization-based Neural Style Transfer can require iterative optimization for every new content-style image pair.
 
@@ -638,7 +624,7 @@ This makes the approach suitable for **fast and flexible style transfer**, where
 
 ---
 
-# 📊 Model Components
+# Model Components
 
 | Component               | Purpose                                        |
 | ----------------------- | ---------------------------------------------- |
@@ -690,7 +676,7 @@ Possible improvements to the project include:
 
 ---
 
-# 📚 Key Learning Outcomes
+# Key Learning Outcomes
 
 Through this project, the following concepts are explored:
 
@@ -708,7 +694,7 @@ Through this project, the following concepts are explored:
 
 ---
 
-# 🔑 Keywords
+# Keywords
 
 ```text
 Neural Style Transfer
@@ -746,7 +732,7 @@ Model Inference
 
 ---
 
-# 📌 Project Summary
+# Project Summary
 
 This project implements a **Deep Learning-based Neural Style Transfer system using Adaptive Instance Normalization (AdaIN)**. A pre-trained VGG-based encoder extracts feature representations from the content and style images. AdaIN aligns the statistical properties of the content features with the style features, and a trained convolutional decoder reconstructs the final stylized image.
 
@@ -756,7 +742,7 @@ Overall, the project demonstrates the complete pipeline from **deep feature extr
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Bibek Nayak**
 
@@ -764,7 +750,7 @@ GitHub: [@bibekn414](https://github.com/bibekn414)
 
 ---
 
-## ⭐ If you find this project useful
+## If you find this project useful
 
 Feel free to explore the implementation, experiment with different content and style images, and extend the project with new Neural Style Transfer techniques.
 
